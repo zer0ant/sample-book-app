@@ -13,9 +13,14 @@ Install pm2(node service orchestrator) as standalone
 sudo npm install -g pm2
 ```
 
-Start JS application as service using pm2:
+Start JS application as service using pm2 (default port):
 ```
-pm2 start -n "My task name" /path/to/node/script
+pm2 start -n "My task name" index.js
+```
+
+Start JS application as service using pm2 (custom port):
+```
+pm2 start -n "My task name" index.js -- 3000
 ```
 
 List pm2 services:
