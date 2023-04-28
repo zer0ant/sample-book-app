@@ -49,7 +49,7 @@ pipeline {
         stage('Tests on PRD') {
             steps {
                 script{
-                    test("DEV")
+                    test("PRD")
                 }
             }
         }
