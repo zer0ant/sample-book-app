@@ -14,7 +14,7 @@ pipeline {
         stage('Deploy to DEV') {
             steps {
                 script{
-                    deploy("DEV")
+                    deploy("DEV", 1010)
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline {
         stage('Deploy to STG') {
             steps {
                 script{
-                    deploy("STG")
+                    deploy("DEV", 2020)
                 }
             }
         }
@@ -42,7 +42,7 @@ pipeline {
         stage('Deploy to PRD') {
             steps {
                 script{
-                    deploy("PRD")
+                    deploy("DEV", 3030)
                 }
             }
         }
@@ -56,16 +56,22 @@ pipeline {
     }
 }
 
-def deploy(String environment){
+// for windows: bat "npm.."
+// for linux/macos: sh "npm .."
+
+def build(){
+    echo "Building of node application is starting.."
+    sh "ls"
+    sh "npm install"
+}
+
+def deploy(String environment, int port){
     echo "Deployment to ${environment} has started.."
+    sh "pm2 start -n \"books-${environment}\" index.js -- ${port}"
 }
 
 def test(String environment){
     echo "Testing to ${environment} has started.."
-}
-
-def build(){
-    echo "Building of node application is starting.."
 }
 
 
