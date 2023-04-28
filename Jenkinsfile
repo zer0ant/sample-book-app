@@ -68,6 +68,7 @@ def build(){
     echo "Building of node application is starting.."
 }
 
+
 // Būvējuma izveidi;
 // Būvējuma izvietošanu “DEV” vidē;
 // Testu izpildi “DEV” vidē;
