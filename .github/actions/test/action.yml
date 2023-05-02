@@ -8,9 +8,9 @@ inputs:
 runs:
   using: "composite"
   steps: 
-    - name: Print output
-      run: echo Testing ${{ inputs.test_set }} test set on ${{ inputs.environment }} has started..
-    - name: Install dependencies
-      run : npm install
-    - name: Execute REST API integration tests
-      run : npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
+    - name: Install depedencies and run REST API integration tests
+      run: |
+        echo Testing ${{ inputs.test_set }} test set on ${{ inputs.environment }} has started..
+        npm install
+        npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
+      shell: bash
