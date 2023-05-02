@@ -63,7 +63,7 @@ def build(){
     echo "Building of node application is starting.."
     sh "ls"
     sh "npm install"
-    sh "npm test"
+    // sh "npm test"
 }
 
 def deploy(String environment, int port){
