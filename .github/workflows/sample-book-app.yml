@@ -20,6 +20,8 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v3.5.2
+        with:
+          clean: false
       - uses: ./.github/actions/deploy
         with:
           port: 1010
@@ -43,6 +45,8 @@ jobs:
     needs: [test-dev]
     steps:
       - uses: actions/checkout@v3.5.2
+        with:
+          clean: false
       - uses: ./.github/actions/deploy
         with:
           port: 2020
@@ -76,6 +80,8 @@ jobs:
     needs: [deploy-prd]
     steps:
       - uses: actions/checkout@v3.5.2
+        with:
+          clean: false
       - uses: actions/checkout@v3.5.2
         with:
           repository: 'mtararujs/course-js-api-framework'
