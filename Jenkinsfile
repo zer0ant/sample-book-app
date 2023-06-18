@@ -18,7 +18,7 @@ pipeline {
         }
         stage('deploy-stg') {
             steps {
-                deploy("dev")
+                deploy("stg")
             }
         }
         stage('api-integration-tests-stg') {
@@ -28,7 +28,7 @@ pipeline {
         }
         stage('deploy-prd') {
             steps {
-                deploy("dev")
+                deploy("prd")
             }
         }
         stage('api-integration-tests-prd') {
