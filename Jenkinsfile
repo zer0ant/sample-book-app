@@ -8,7 +8,7 @@ pipeline {
         }
         stage('deploy-dev') {
             steps {
-                deploy("DEV")
+                deploy("dev")
             }
         }
         stage('api-integration-tests-dev') {
@@ -18,7 +18,7 @@ pipeline {
         }
         stage('deploy-stg') {
             steps {
-                deploy("STG")
+                deploy("dev")
             }
         }
         stage('api-integration-tests-stg') {
@@ -28,7 +28,7 @@ pipeline {
         }
         stage('deploy-prd') {
             steps {
-                deploy("PRD")
+                deploy("dev")
             }
         }
         stage('api-integration-tests-prd') {
@@ -45,13 +45,15 @@ def build_docker_image(){
 
     echo "Runnning unit tests for node application in docker container.."
     sh "docker run --rm --entrypoint=npm mtararujs/sample-book-app run test"
-    
+
     echo "Pushing docker image to docker registry.."
     sh "docker push mtararujs/sample-book-app"
 }
 
 def deploy(String environment){
     echo "Deployment triggered on ${environment} environment.."
+    sh "docker-compose down"
+    sh "docker-compose up sample-book-app-${environment}"
 }
 
 def run_api_tests(String environment){
