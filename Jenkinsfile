@@ -60,6 +60,7 @@ def build() {
     bat "dir"
     bat "npm -v"
     bat "npm install"
+    bat "npm install -g pm2"
 
 }
 
