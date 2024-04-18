@@ -42,8 +42,10 @@ jobs:
     needs: [deploy-dev]
 
     steps:
-      - name: test success
-        run: echo Testing on DEV has started ..
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/test
+        with: 
+          environment: 'DEV'
 
 
   deploy-stg:
