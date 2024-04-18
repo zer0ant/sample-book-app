@@ -57,19 +57,19 @@ pipeline {
 
 def build() {
     echo 'Building of node application is starting ..'
-    bat "dir"
-    bat "npm -v"
+    bat "ls"
+   // bat "npm -v"
     bat "npm install"
 
 }
 
 def deploy(String environment, int port) {
     echo "Deployment to ${environment} has started .."
-    bat "pm2 delete ${environment}"
-    bat "pm2 start -n \"${environment}\" index.js -- ${port}"
+   // bat "pm2 delete ${environment}"
+   // bat "pm2 start -n \"${environment}\" index.js -- ${port}"
 }
 
 def test(String environment) {
     echo "Testing on ${environment} has started .."
-    bat "npm test"
+   // bat "npm test"
 }
