@@ -9,10 +9,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  check-environment:
-    name: Check Node.js and NPM
+  build:
     runs-on: self-hosted
     steps:
+      - uses: actions/checkout@v4
+      
       - name: Check Node.js version
         run: node -v
         shell: bash
@@ -20,15 +21,12 @@ jobs:
       - name: Check NPM version
         run: npm -v
         shell: bash
+#    name: Build
+#    runs-on: self-hosted
 
-
-  build:
-    name: Build
-    runs-on: self-hosted
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/build
+ #   steps:
+ #     - uses: actions/checkout@v4
+ #     - uses: ./.github/actions/build
 
 
   deploy-dev:
