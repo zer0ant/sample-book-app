@@ -16,3 +16,7 @@ runs:
         npm install
         npm run books ${{ inputs.environment }}
       shell: bash
+    - name: Upload report as artifact
+    uses: actions/uplaod-artifact@v4.3.2
+      name: test-report
+      path: api-tests/mochawesome-report
