@@ -1,12 +1,6 @@
 runs:   
   using: "composite"
   steps:
-    - name: Debug info
-      run: |
-        echo "Shell: $SHELL"
-        echo "Path: $PATH"
-        which bash
-        which echo
     - name: ... build success ...
       run: echo Building of node application is starting ..
       shell: bash
