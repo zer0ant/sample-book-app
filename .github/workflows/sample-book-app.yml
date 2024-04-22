@@ -9,6 +9,19 @@ on:
   workflow_dispatch:
 
 jobs:
+  check-environment:
+    name: Check Node.js and NPM
+    runs-on: self-hosted
+    steps:
+      - name: Check Node.js version
+        run: node -v
+        shell: bash
+
+      - name: Check NPM version
+        run: npm -v
+        shell: bash
+
+
   build:
     name: Build
     runs-on: self-hosted
