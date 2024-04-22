@@ -9,14 +9,10 @@ runs:
     - name: Print output
       run: echo Testing on ${{ inputs.environment }} has started ..
       shell: bash
-
-#    - name: Install dependencies and pm2
-#      run: |
- #       npm install
- #       sudo npm install -g pm2
- #       pm2 start -n ${{ inputs.environment }} index.js
- #     shell: bash
-
- #   - name: Start test
- #     run: npm test
- #     shell: bash
+    - name: Install dependencies and run REST API integration test
+      working-directory: 'api-tests'
+      run: |
+        echo Testing book test set on ${{ inputs.environment }} has started ..
+        npm install
+        npm run books ${{ inputs.environment }}
+      shell: bash
