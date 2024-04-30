@@ -8,14 +8,14 @@ runs:
   steps:
     - name: Print output
       run: echo Testing on ${{ inputs.environment }} has started ..
-      shell: bash
+      shell: cmd
     - name: Install dependencies and run REST API integration test
       working-directory: 'api-tests'
       run: |
         echo Testing book test set on ${{ inputs.environment }} has started ..
         npm install
         npm run books ${{ inputs.environment }}
-      shell: bash
+      shell: cmd
     - name: Upload report as artifact
       uses: actions/uplaod-artifact@v4.3.2
       with:
